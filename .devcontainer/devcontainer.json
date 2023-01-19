@@ -1,0 +1,10 @@
+{
+  "image": "117503445/dev-golang",
+  "customizations": {
+    // Configure properties specific to VS Code.
+    "vscode": {
+      // Add the IDs of extensions you want installed when the container is created.
+      "extensions": ["aldijav.golangwithdidi", "mhutchie.git-graph", "redhat.vscode-yaml"]
+    }
+  }
+}
