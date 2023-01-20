@@ -1,5 +1,5 @@
 connector:
-  name: ""
-  host: ""
+  name: "ssh" # ssh is the only connector currently supported
+  host: "192.168.1.1:22" # the host of router
   username: ""
   password: ""
