@@ -1,4 +1,4 @@
-# LuCI-PPPoE-reconnect
+# OpenWRT-WAN-reconnect
 
 [![GoTemplate](https://img.shields.io/badge/go/template-black?logo=go)](https://github.com/SchwarzIT/go-template)
 

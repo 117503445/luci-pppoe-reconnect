@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/117503445/luci-pppoe-reconnect/internal/cfg"
-	"github.com/117503445/luci-pppoe-reconnect/internal/log"
+	"github.com/117503445/openwrt-wan-reconnect/internal/cfg"
+	"github.com/117503445/openwrt-wan-reconnect/internal/log"
 	"github.com/spf13/viper"
 	"go.uber.org/zap"
 

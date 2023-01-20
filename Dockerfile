@@ -19,7 +19,7 @@ FROM base AS build
 RUN --mount=target=. \
     --mount=type=cache,target=/go/pkg/mod \
     --mount=type=cache,target=/root/.cache/go-build \
-    go build -ldflags="-w -s" -o /app/main ./cmd/luci-pppoe-reconnect/*.go
+    go build -ldflags="-w -s" -o /app/main ./cmd/openwrt-wan-reconnect/*.go
 
 # Import the binary from build stage
 FROM gcr.io/distroless/static:nonroot@sha256:ed05c7a5d67d6beebeba19c6b9082a5513d5f9c3e22a883b9dc73ec39ba41c04 as prd

@@ -3,7 +3,7 @@ PWD = $(shell pwd)
 
 # constants
 GOLANGCI_VERSION = 1.42.1
-DOCKER_REPO = luci-pppoe-reconnect
+DOCKER_REPO = openwrt-wan-reconnect
 DOCKER_TAG = latest
 
 all: git-hooks  tidy ## Initializes all tools
@@ -24,7 +24,7 @@ fmt: ## Formats all code with go fmt
 	@go fmt ./...
 
 run: fmt ## Run the app
-	@go run ./cmd/luci-pppoe-reconnect/main.go
+	@go run ./cmd/openwrt-wan-reconnect/main.go
 
 test-build: ## Tests whether the code compiles
 	@go build -o /dev/null ./...

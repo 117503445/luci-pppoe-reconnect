@@ -1,4 +1,4 @@
-module github.com/117503445/luci-pppoe-reconnect
+module github.com/117503445/openwrt-wan-reconnect
 
 go 1.19
 
