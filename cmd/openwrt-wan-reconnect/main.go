@@ -39,6 +39,7 @@ func run() error {
 	c := connector.GetConnector("ssh", logger)
 
 	for {
+		logger.Info("wait until network fail")
 		d.WaitUntilFailure()
 		logger.Info("try to connect")
 		err := c.Connect()

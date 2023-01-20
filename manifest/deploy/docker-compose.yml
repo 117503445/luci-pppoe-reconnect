@@ -1,0 +1,8 @@
+version: "3.9"
+
+services:
+  openwrt-wan-reconnect:
+    image: 117503445/openwrt-wan-reconnect
+    restart: unless-stopped
+    volumes:
+    - ./config.yaml:/home/nonroot/config.yaml
