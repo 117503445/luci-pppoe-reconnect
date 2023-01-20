@@ -36,7 +36,7 @@ func run() error {
 	cfg.InitConfig()
 
 	d := detector.GetDetector("http", logger)
-	c := connector.GetConnector("fake", logger)
+	c := connector.GetConnector("ssh", logger)
 
 	for {
 		d.WaitUntilFailure()
