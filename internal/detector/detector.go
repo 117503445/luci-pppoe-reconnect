@@ -6,12 +6,16 @@ type Detector interface {
 	WaitUntilFailure()
 }
 
-func GetDetector(name string, logger *zap.Logger) Detector {
+func GetDetector(cfg map[string]interface{}, logger *zap.Logger) Detector {
+	name, ok := cfg["type"]
+	if !ok {
+		panic("detector not found")
+	}
+	delete(cfg, "type")
+
 	switch name {
 	case "http":
-		return &httpDetector{
-			Logger: logger,
-		}
+		return newHTTPDetector(cfg, logger)
 	}
 	panic("Unsupported Detector")
 }

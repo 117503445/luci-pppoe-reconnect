@@ -1,25 +1,33 @@
 package connector
 
 import (
-	"github.com/spf13/viper"
+	"encoding/json"
+
 	"go.uber.org/zap"
 	"golang.org/x/crypto/ssh"
 )
 
 type sshConnector struct {
 	*zap.Logger
+	cfg *sshConnectorConfig
+}
+
+type sshConnectorConfig struct {
+	Host     string
+	Username string
+	Password string
 }
 
 func (c *sshConnector) Connect() error {
 	config := &ssh.ClientConfig{
-		User: viper.GetString("connector.username"),
+		User: c.cfg.Username,
 		Auth: []ssh.AuthMethod{
-			ssh.Password(viper.GetString("connector.password")),
+			ssh.Password(c.cfg.Password),
 		},
 		HostKeyCallback: ssh.InsecureIgnoreHostKey(),
 	}
 
-	conn, err := ssh.Dial("tcp", viper.GetString("connector.host"), config)
+	conn, err := ssh.Dial("tcp", c.cfg.Host, config)
 	if err != nil {
 		return err
 	}
@@ -36,4 +44,20 @@ func (c *sshConnector) Connect() error {
 	}
 
 	return nil
+}
+
+func newSSHConnector(cfg map[string]interface{}, logger *zap.Logger) *sshConnector {
+	data, err := json.Marshal(cfg)
+	if err != nil {
+		panic(err)
+	}
+	var config sshConnectorConfig
+	err = json.Unmarshal(data, &config)
+	if err != nil {
+		panic(err)
+	}
+	return &sshConnector{
+		Logger: logger,
+		cfg:    &config,
+	}
 }

@@ -23,6 +23,12 @@ make all
 This will initialize a git repo, download the dependencies in the latest versions and install all needed tools.
 If needed code generation will be triggered in this target as well.
 
+## Run
+
+```bash
+make run
+```
+
 ## Test & lint
 
 Run linting
@@ -35,4 +41,34 @@ Run tests
 
 ```bash
 make test
+```
+
+## detector
+
+http
+
+```yaml
+detector:
+    type: "http"
+    url: "http://baidu.com"
+```
+
+## connector
+
+ssh
+
+```yaml
+type: "ssh"
+host: "192.168.1.1:22"
+username: "root"
+password: "123456"
+```
+
+clash
+
+```yaml
+type: "clash"
+host: "http://192.168.1.1:9090"
+token: "123456"
+selector: "selector"
 ```
