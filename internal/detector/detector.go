@@ -16,6 +16,7 @@ func GetDetector(cfg map[string]interface{}, logger *zap.Logger) Detector {
 	switch name {
 	case "http":
 		return newHTTPDetector(cfg, logger)
+	default:
+		panic("Unsupported Detector")
 	}
-	panic("Unsupported Detector")
 }

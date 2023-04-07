@@ -29,7 +29,6 @@ func (c *Checker) StartCheck() {
 }
 
 func NewChecker(cfg map[string]map[string]interface{}, logger *zap.Logger) *Checker {
-
 	logger = logger.Named("checker")
 
 	dCfg, ok := cfg["detector"]

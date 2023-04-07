@@ -42,6 +42,9 @@ linters-settings:
   funlen:
     lines: 100
     statements: 50
+  gosec:
+    excludes:
+      - G106
 
 issues:
   # Excluding configuration per-path, per-linter, per-text and per-source

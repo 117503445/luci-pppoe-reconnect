@@ -22,7 +22,7 @@ func GetConnector(cfg map[string]interface{}, logger *zap.Logger) Connector {
 		return newSSHConnector(cfg, logger)
 	case "clash":
 		return newClashConnector(cfg, logger)
+	default:
+		panic("Unsupported Connector")
 	}
-
-	panic("Unsupported Connector")
 }

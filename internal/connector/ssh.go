@@ -39,11 +39,8 @@ func (c *sshConnector) Connect() error {
 	}
 	defer session.Close()
 
-	if err := session.Run("/sbin/ifup wan"); err != nil {
-		return err
-	}
-
-	return nil
+	err = session.Run("/sbin/ifup wan")
+	return err
 }
 
 func newSSHConnector(cfg map[string]interface{}, logger *zap.Logger) *sshConnector {

@@ -2,7 +2,7 @@ SHELL=/bin/bash -e -o pipefail
 PWD = $(shell pwd)
 
 # constants
-GOLANGCI_VERSION = 1.42.1
+GOLANGCI_VERSION = 1.52.2
 DOCKER_REPO = openwrt-wan-reconnect
 DOCKER_TAG = latest
 

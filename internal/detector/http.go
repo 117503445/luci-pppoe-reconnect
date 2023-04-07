@@ -2,9 +2,9 @@ package detector
 
 import (
 	"encoding/json"
-	"net/http"
 	"time"
 
+	"github.com/imroc/req/v3"
 	"go.uber.org/zap"
 )
 
@@ -14,13 +14,15 @@ type httpDetector struct {
 }
 
 type httpDetectorConfig struct {
-	Url string
+	URL string
 }
+
+const MaxTry = 3
 
 func (d *httpDetector) WaitUntilFailure() {
 	var counter int
 	for {
-		_, err := http.Get(d.cfg.Url)
+		_, err := req.Get(d.cfg.URL)
 		if err != nil {
 			counter++
 			d.Logger.Info("get failed", zap.Int("counter", counter), zap.Error(err))
@@ -30,7 +32,7 @@ func (d *httpDetector) WaitUntilFailure() {
 			}
 			counter = 0
 		}
-		if counter == 3 {
+		if counter == MaxTry {
 			break
 		}
 		time.Sleep(time.Minute)
@@ -48,7 +50,7 @@ func newHTTPDetector(cfg map[string]interface{}, logger *zap.Logger) *httpDetect
 		panic(err)
 	}
 
-	logger.Info("init http detector", zap.String("url", config.Url))
+	logger.Info("init http detector", zap.String("url", config.URL))
 
 	return &httpDetector{
 		Logger: logger,
